@@ -1,27 +1,46 @@
 # Shourya Portfolio
 
-A simple, minimal, single-page portfolio for an independent web designer and front-end developer.
+Static GitHub Pages portfolio for an independent web designer and front-end developer.
 
-## Open the portfolio
+## Pages
 
-Open either of these files directly in a browser:
+- `index.html` — production homepage
+- `contact.html` — dedicated contact flow with Gmail compose and copy-email fallback
+- `SHOURYA-PORTFOLIO.html` — generated standalone homepage artifact; `contact.html` must remain beside it
+- `build_standalone.py` — regenerates that artifact from the production homepage, CSS, JavaScript and local images
 
-- `SHOURYA-PORTFOLIO.html` — recommended standalone portfolio
-- `index.html` — identical standalone copy
+## Contact flow
 
-Both files contain the CSS, JavaScript, favicon and all three background images internally. They work even when moved to another folder and do not require the other project files or a web server.
+Homepage CTA → `contact.html` → Gmail compose in a new browser tab or clipboard copy.
 
-## Optional source files
+The site does not use desktop-email links, so Linux will not invoke `xdg-open` or a local mail application.
 
-- `styles.css` — readable standalone copy of the embedded styles
-- `script.js` — readable standalone copy of the embedded JavaScript
-- `images/editorial/` — the three original local WebP backgrounds
-- `IMAGE_CREDITS.md` — image sources and attribution
-- `robots.txt`
+## Local development
 
-## Design
+From the repository root:
 
-- Dark navy background with restrained blue and red accents
-- Natural vertical scrolling with no selectable pages or carousels
-- Three full-screen abstract/architecture background images
-- No image grids, workshops, people or laptop photography
+```bash
+python3 -m http.server 4173
+```
+
+Then open:
+
+- `http://localhost:4173/`
+- `http://localhost:4173/contact.html`
+
+## Production files
+
+- `styles.css` — shared visual system and homepage layout
+- `script.js` — homepage scroll progress and year
+- `contact.css` — contact-page layout and interaction states
+- `contact.js` — clipboard copy behavior and year
+- `favicon.svg` — site favicon
+- `og-image.jpg` — 1200×630 social sharing image derived from the existing abstract hero artwork
+- `images/editorial/` — local WebP backgrounds
+- `IMAGE_CREDITS.md` — source photography and replacement guidance
+- `robots.txt` — crawler policy
+- `sitemap.xml` — homepage and contact-page discovery
+
+## Deployment
+
+The repository root is the GitHub Pages source. Commit all HTML, CSS, JavaScript, image and metadata files together so relative links such as `contact.html` resolve after deployment.

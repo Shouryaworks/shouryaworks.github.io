@@ -17,3 +17,7 @@ function requestProgressUpdate() {
 window.addEventListener("scroll", requestProgressUpdate, { passive: true });
 window.addEventListener("resize", requestProgressUpdate);
 updateProgress();
+
+document.querySelectorAll("[data-year]").forEach((element) => {
+  element.textContent = String(new Date().getFullYear());
+});

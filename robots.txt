@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://shouryaworks.github.io/sitemap.xml

@@ -1,0 +1,303 @@
+/* Contact page extensions. The base stylesheet supplies the existing
+   portfolio tokens, header, footer, typography and responsive foundation. */
+
+.contact-page {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.contact-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--header-height) + 5rem) var(--page-pad) 6rem;
+  background: var(--night);
+}
+
+.contact-background,
+.contact-background-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.contact-background {
+  z-index: -2;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.contact-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+  filter: saturate(0.48) contrast(1.04) brightness(0.5);
+}
+
+.contact-background-shade {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 13, 0.78), rgba(5, 7, 13, 0.34)),
+    linear-gradient(180deg, rgba(5, 7, 13, 0.18), rgba(5, 7, 13, 0.38) 52%, var(--night) 100%),
+    linear-gradient(120deg, rgba(36, 93, 222, 0.13), transparent 44%, rgba(217, 54, 75, 0.12));
+}
+
+.contact-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  align-items: end;
+  gap: clamp(4rem, 9vw, 10rem);
+}
+
+.contact-introduction h1 {
+  max-width: 10ch;
+  margin-top: clamp(3.5rem, 8vw, 7rem);
+  font-size: clamp(4rem, 8.5vw, 8.8rem);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.contact-lead {
+  max-width: 43rem;
+  margin-top: 2.2rem;
+  color: var(--muted);
+  font-size: clamp(0.92rem, 1.25vw, 1.05rem);
+}
+
+.contact-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 2rem;
+  color: rgba(243, 245, 248, 0.68);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact-availability > span {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: #48d68b;
+  box-shadow: 0 0 0 0.25rem rgba(72, 214, 139, 0.1);
+}
+
+.contact-options {
+  padding-block: 0.2rem;
+}
+
+.options-label {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.gmail-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.35rem, 2.4vw, 2.35rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  text-decoration: none;
+  transition: color 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+
+.gmail-arrow {
+  display: grid;
+  width: 3.1rem;
+  height: 3.1rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--red);
+  font-size: 0.9rem;
+  transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+.gmail-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--red);
+  color: #ff8c99;
+}
+
+.gmail-link:hover .gmail-arrow {
+  transform: rotate(45deg);
+  border-color: var(--red);
+  background: rgba(217, 54, 75, 0.1);
+}
+
+.email-divider {
+  height: clamp(4rem, 8vw, 7rem);
+}
+
+.email-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.copy-button {
+  display: none;
+  min-height: 2.75rem;
+  padding: 0.45rem 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.js .copy-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.copy-button:hover {
+  transform: translateY(-1px);
+  color: #ff8c99;
+}
+
+.copy-button[data-state="success"] {
+  color: #6de0a4;
+}
+
+.email-address {
+  margin-top: 1.25rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.copy-status {
+  min-height: 1.5em;
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.return-link {
+  position: absolute;
+  right: var(--page-pad);
+  bottom: 2.1rem;
+  z-index: 2;
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-decoration-color: rgba(226, 232, 242, 0.28);
+  text-underline-offset: 0.22em;
+  text-transform: uppercase;
+  transition: color 180ms ease, transform 180ms ease, text-decoration-color 180ms ease;
+}
+
+.return-link:hover {
+  transform: translateX(-2px);
+  color: var(--white);
+  text-decoration-color: currentColor;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .gmail-link:hover,
+  .copy-button:hover,
+  .return-link:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-hero {
+    justify-content: flex-start;
+    padding-bottom: 7rem;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 4rem;
+  }
+
+  .contact-introduction h1 {
+    font-size: clamp(4rem, 15vw, 7rem);
+  }
+
+  .contact-options {
+    width: min(100%, 36rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-introduction h1 {
+    font-size: clamp(3.5rem, 16vw, 5.2rem);
+  }
+
+  .contact-lead {
+    font-size: 0.92rem;
+  }
+
+  .gmail-link {
+    font-size: 1.15rem;
+  }
+
+  .gmail-arrow {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .email-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .return-link {
+    right: auto;
+    left: var(--page-pad);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-page {
+    scroll-behavior: auto;
+  }
+
+  .gmail-link,
+  .gmail-arrow,
+  .copy-button,
+  .return-link {
+    transition: none;
+  }
+}

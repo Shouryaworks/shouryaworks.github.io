@@ -5,8 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#05070d">
   <meta name="description" content="Portfolio of Shourya, an independent web designer and front-end developer based in Dinajpur, Bangladesh.">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, follow">
   <title>Shourya — Web Designer & Front-End Developer</title>
+  <link rel="canonical" href="https://shouryaworks.github.io/">
+  <meta name="author" content="Shourya">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shourya Portfolio">
+  <meta property="og:title" content="Shourya — Web Designer & Front-End Developer">
+  <meta property="og:description" content="Independent web designer and front-end developer creating clear, characterful websites.">
+  <meta property="og:url" content="https://shouryaworks.github.io/">
+  <meta property="og:image" content="https://shouryaworks.github.io/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Shourya — Websites with clarity and character">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwMzA3MTIiLz4KICA8cGF0aCBkPSJNNDUgMTcuNWMtMy4yLTIuMi03LjItMy40LTEyLTMuNC0xMS4zIDAtMTguNSA1LjktMTguNSAxNS45djEuMWMwIDkuOSA2LjQgMTUuNCAxNyAxNS40IDIuNSAwIDQuNi0uMiA2LjMtLjd2LTcuNWMtMS45LjctNCAxLjEtNi40IDEuMS01LjIgMC04LTIuMy04LTcuNnYtMS42YzAtNSAyLjktNy45IDguMy03LjkgMi44IDAgNS4yLjUgNy4zIDEuNmwyLjctNi41IDMuMy4xWiIgZmlsbD0iI2Y3ZjlmZiIvPgogIDxjaXJjbGUgY3g9IjQ3IiBjeT0iNDUiIHI9IjQuNSIgZmlsbD0iI2YyMzg1MCIvPgo8L3N2Zz4K" type="image/svg+xml">
   <style>
@@ -47,7 +59,7 @@ body {
   overflow-x: hidden;
   background: var(--night);
   color: var(--white);
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -78,6 +90,40 @@ a {
   outline-offset: 5px;
 }
 
+main:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.7rem 0.9rem;
+  transform: translateY(-180%);
+  background: var(--white);
+  color: var(--night);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .scroll-progress {
   position: fixed;
   inset: 0 0 auto;
@@ -98,7 +144,8 @@ a {
   align-items: center;
   min-height: var(--header-height);
   padding: 1rem var(--page-pad);
-  background: rgba(5, 7, 13, 0.58);
+  border-bottom: 1px solid rgba(226, 232, 242, 0.08);
+  background: linear-gradient(180deg, rgba(5, 7, 13, 0.72), rgba(5, 7, 13, 0.46));
   backdrop-filter: blur(14px);
 }
 
@@ -108,28 +155,46 @@ a {
   font-weight: 700;
   letter-spacing: -0.035em;
   text-decoration: none;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.name span,
-.header-email:hover {
+.name:hover {
+  opacity: 0.78;
+  transform: translateY(-1px);
+}
+
+.name span {
   color: var(--red);
+}
+
+.header-email:hover {
+  color: #ff8795;
 }
 
 .site-header > p {
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .header-email {
   justify-self: end;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding-block: 0.25rem;
   font-size: 0.75rem;
   text-decoration: none;
-  transition: color 180ms ease;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.header-email:hover {
+  transform: translateY(-1px);
 }
 
 main {
+  overflow: hidden;
   overflow: clip;
 }
 
@@ -141,13 +206,14 @@ main {
 .section {
   position: relative;
   isolation: isolate;
+  min-height: 100vh;
   min-height: 100svh;
   padding: calc(var(--header-height) + 6rem) var(--page-pad) 5rem;
 }
 
 .section-label {
   color: var(--muted);
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -192,6 +258,7 @@ main {
 /* Hero */
 .hero {
   display: flex;
+  min-height: 100vh;
   min-height: 100svh;
   align-items: flex-end;
   overflow: hidden;
@@ -233,25 +300,27 @@ main {
   gap: 0.8rem;
   align-items: center;
   flex: 0 0 auto;
+  min-height: 2.75rem;
   padding-bottom: 0.35rem;
   border-bottom: 1px solid currentColor;
   font-size: 0.86rem;
   text-decoration: none;
-  transition: color 180ms ease;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .hero-bottom > a:hover {
+  transform: translateY(-2px);
   color: #ff8795;
 }
 
 .hero-location {
   position: absolute;
-  right: var(--page-pad);
-  bottom: 7rem;
-  transform: rotate(90deg) translateX(100%);
-  transform-origin: right bottom;
-  color: rgba(243, 245, 248, 0.48);
-  font-size: 0.61rem;
+  right: calc(var(--page-pad) - 0.25rem);
+  bottom: 6.5rem;
+  margin: 0;
+  writing-mode: vertical-rl;
+  color: rgba(243, 245, 248, 0.55);
+  font-size: 0.67rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -464,17 +533,18 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  margin-top: clamp(4rem, 8vw, 7rem);
+  margin-top: clamp(3rem, 5vw, 5rem);
   padding: 1.2rem 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   font-size: clamp(1.3rem, 3.5vw, 3.6rem);
   letter-spacing: -0.04em;
   text-decoration: none;
-  transition: color 200ms ease, border-color 200ms ease;
+  transition: color 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
 
 .contact-email:hover {
+  transform: translateY(-2px);
   border-color: var(--red);
   color: #ff8795;
 }
@@ -495,17 +565,24 @@ footer {
   padding: 1.4rem var(--page-pad);
   background: var(--night);
   color: #7e8797;
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 footer a {
-  text-decoration: none;
+  display: inline-flex;
+  min-height: 1.75rem;
+  align-items: center;
+  text-decoration: underline;
+  text-decoration-color: rgba(226, 232, 242, 0.28);
+  text-underline-offset: 0.22em;
+  transition: color 180ms ease, opacity 180ms ease, text-decoration-color 180ms ease;
 }
 
 footer a:hover {
   color: var(--white);
+  text-decoration-color: currentColor;
 }
 
 @media (max-width: 800px) {
@@ -615,6 +692,19 @@ footer a:hover {
   html {
     scroll-behavior: auto;
   }
+
+  .skip-link,
+  .name,
+  .header-email,
+  .hero-bottom > a,
+  .contact-email,
+  footer a {
+    transition: none;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
 }
 
 </style>
@@ -639,6 +729,10 @@ window.addEventListener("scroll", requestProgressUpdate, { passive: true });
 window.addEventListener("resize", requestProgressUpdate);
 updateProgress();
 
+document.querySelectorAll("[data-year]").forEach((element) => {
+  element.textContent = String(new Date().getFullYear());
+});
+
 </script>
 
   <script type="application/ld+json">
@@ -647,7 +741,8 @@ updateProgress();
       "@type": "Person",
       "name": "Shourya",
       "jobTitle": "Web Designer and Front-End Developer",
-      "email": "mailto:Vaylobusiness@gmail.com",
+      "url": "https://shouryaworks.github.io/",
+      "email": "vaylobusiness@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dinajpur",
@@ -657,15 +752,16 @@ updateProgress();
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <a class="name" href="#top" aria-label="Shourya — Back to top">Shourya<span>.</span></a>
     <p>Independent web designer &amp; front-end developer</p>
-    <a class="header-email" href="mailto:Vaylobusiness@gmail.com">Let’s work together</a>
+    <a class="header-email" href="contact.html">Let’s work together</a>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- Only atmospheric backgrounds are used; there are no image grids. -->
     <section class="hero section" id="top" aria-labelledby="hero-title">
       <div class="background-image" aria-hidden="true">
@@ -675,10 +771,10 @@ updateProgress();
 
       <div class="hero-content">
         <p class="eyebrow">Portfolio / 2026</p>
-        <h1 id="hero-title">Websites with<br>clarity and character.</h1>
+        <h1 id="hero-title">Websites with<br> clarity and character.</h1>
         <div class="hero-bottom">
           <p>I’m Shourya, an independent designer and developer based in Dinajpur, Bangladesh.</p>
-          <a href="mailto:Vaylobusiness@gmail.com">Start a project <span aria-hidden="true">↗</span></a>
+          <a href="contact.html">Start a project <span aria-hidden="true">↗</span></a>
         </div>
       </div>
 
@@ -759,7 +855,7 @@ updateProgress();
       <div class="container about-layout">
         <p class="section-label">04 / Approach</p>
         <div>
-          <h2 id="about-title">Design sense.<br>Builder’s mindset.</h2>
+          <h2 id="about-title">Design sense.<br> Builder’s mindset.</h2>
           <div class="about-text">
             <p>I care about how a website feels as much as how it looks. The typography, spacing, interaction and writing should all work together without getting in the way.</p>
             <p>I use modern tools—including AI where it genuinely helps—to explore ideas and move faster. The direction and final details stay intentional.</p>
@@ -776,9 +872,9 @@ updateProgress();
 
       <div class="container contact-content">
         <p class="section-label">05 / Contact</p>
-        <h2 id="contact-title">Have a project<br>in mind?</h2>
-        <a class="contact-email" href="mailto:Vaylobusiness@gmail.com">
-          <span>Vaylobusiness@gmail.com</span>
+        <h2 id="contact-title">Have a project<br> in mind?</h2>
+        <a class="contact-email" href="contact.html">
+          <span>Start a conversation</span>
           <span aria-hidden="true">↗</span>
         </a>
         <p class="contact-note">Tell me what you’re building, where you are in the process and what you need. I’ll reply with an honest next step.</p>
@@ -789,7 +885,8 @@ updateProgress();
   <footer>
     <span>© <span data-year>2026</span> Shourya</span>
     <span>Dinajpur, Bangladesh</span>
-    <a href="https://unsplash.com/license" target="_blank" rel="noreferrer">Photography via Unsplash</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://unsplash.com/license">Photography via Unsplash</a>
   </footer>
 </body>
 </html>
