@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    background-color: #0c0c0c;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: "Kanit", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Kanit", sans-serif;
+    color: #d7e2ea;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* Gradient display type used by every section heading. */
+  .hero-heading {
+    background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+
+@layer components {
+  .glass-nav {
+    background: rgba(20, 20, 24, 0.52);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(22px) saturate(135%);
+    -webkit-backdrop-filter: blur(22px) saturate(135%);
+  }
+
+  .glass-logo {
+    background: linear-gradient(135deg, rgba(182, 0, 168, 0.22), rgba(190, 76, 0, 0.16));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+  }
+
+  .glass-panel,
+  .glass-project {
+    background: linear-gradient(135deg, rgba(28, 28, 34, 0.72), rgba(12, 12, 12, 0.58));
+    backdrop-filter: blur(28px) saturate(125%);
+    -webkit-backdrop-filter: blur(28px) saturate(125%);
+  }
+
+  .glass-button {
+    background: linear-gradient(123deg, #18001F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
+    box-shadow: 0 10px 30px rgba(182, 0, 168, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  }
+
+  /* Surfaces used by the admin panel — same glass language, tuned for density. */
+  .glass-card {
+    background: linear-gradient(135deg, rgba(28, 28, 34, 0.78), rgba(12, 12, 12, 0.66));
+    backdrop-filter: blur(28px) saturate(125%);
+    -webkit-backdrop-filter: blur(28px) saturate(125%);
+  }
+
+  .glass-sidebar {
+    background: linear-gradient(180deg, rgba(20, 20, 24, 0.72), rgba(12, 12, 12, 0.62));
+    backdrop-filter: blur(26px) saturate(130%);
+    -webkit-backdrop-filter: blur(26px) saturate(130%);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  /* Ambient backdrop behind the admin shell. */
+  .admin-backdrop {
+    background:
+      radial-gradient(60rem 40rem at 8% -10%, rgba(182, 0, 168, 0.16), transparent 60%),
+      radial-gradient(48rem 34rem at 100% 0%, rgba(190, 76, 0, 0.12), transparent 62%),
+      #0c0c0c;
+  }
+}
