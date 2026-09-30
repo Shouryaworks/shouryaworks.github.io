@@ -101,10 +101,63 @@ const services: ServicesContent = {
 };
 
 const pricing: PricingContent = {
-  title: "Pricing",
-  subtitle: "",
-  note: "",
-  tiers: [],
+  title: "Pricing options",
+  subtitle: "Choose the level that fits your project.",
+  note: "Start with a clear package below, or choose a custom order if you have something specific in mind.",
+  tiers: [
+    {
+      id: "tier-landing",
+      title: "Landing",
+      price: "৳1,500+",
+      period: "",
+      description:
+        "A focused one-page website built to present your work, brand, or idea with clarity and character.",
+      features: [],
+      ctaText: "Start with Landing",
+      ctaHref: "/contact",
+      highlighted: false,
+      visible: true,
+    },
+    {
+      id: "tier-portfolio",
+      title: "Portfolio",
+      price: "৳3,000+",
+      period: "",
+      description:
+        "A polished multi-page website designed to showcase your work, services, and personal brand with a distinctive visual identity.",
+      features: [],
+      ctaText: "Choose Portfolio",
+      ctaHref: "/contact",
+      highlighted: false,
+      visible: true,
+    },
+    {
+      id: "tier-showcase",
+      title: "Showcase",
+      price: "৳5,000+",
+      period: "",
+      description:
+        "A more immersive web experience for projects that need richer interactions, motion, and a stronger visual presence.",
+      features: [],
+      ctaText: "Build a Showcase",
+      ctaHref: "/contact",
+      highlighted: false,
+      visible: true,
+    },
+    {
+      id: "tier-custom",
+      title: "Custom Order",
+      price: "Custom Price",
+      period: "",
+      description:
+        "Have something specific in mind? Build a website around your exact requirements instead of fitting your idea into a fixed package.",
+      features: [],
+      ctaText: "Request a Custom Order",
+      ctaHref: "/contact",
+      highlighted: false,
+      visible: true,
+    },
+  ],
 };
 
 const projects: ProjectsContent = {

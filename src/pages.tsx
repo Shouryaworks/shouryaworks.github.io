@@ -29,15 +29,9 @@ function HomePage() {
   );
 }
 
-/** Pricing tiers only exist once they are added in the admin panel, so this
- *  renders exactly what /pricing rendered before until then. */
+/** One continuous page: services introduction → pricing packages → custom order. */
 function PricingPage() {
-  return (
-    <>
-      <ServicesSection />
-      <PricingSection />
-    </>
-  );
+  return <PricingSection />;
 }
 
 export default function Pages() {
